@@ -52,4 +52,5 @@ gem 'therubyracer'
 gem 'less-rails'
 
 gem 'font-awesome-sass'
+gem 'devise', '~> 4.3'
 

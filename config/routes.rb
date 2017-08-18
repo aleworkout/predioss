@@ -1,8 +1,18 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :products
   resources :shops
   
-  root to: "shops#index"
+  devise_scope :user do
+    authenticated  do
+      root to: 'shops#index'
+    end
+
+    unauthenticated do
+      root to: 'devise/sessions#new', as: 'unauthenticated_root'
+    end
+  end  
+  #root to: "shops#index"
   get 'login' => "welcome#login"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
